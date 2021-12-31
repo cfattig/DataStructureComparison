@@ -5,6 +5,8 @@ int main()
 {
 	linkedList list;
 	char input;
+	info tempRecord;
+	bool successCheck = true;
 
 	
 
@@ -24,6 +26,15 @@ int main()
 		switch (input)
 		{
 			case 'i':
+				cout << "Enter a name for the record" << endl;
+				cin >> tempRecord.name;
+				cout << "\nEnter an age for the record" << endl;
+				cin >> tempRecord.age;
+				cout << "\nEnter whether the person on record holds a college degree (1=true|0=false)" << endl;
+				cin >> tempRecord.degree;
+				cout << endl;
+
+				successCheck = list.insert(tempRecord);
 				break;
 			case 'r':
 				break;
