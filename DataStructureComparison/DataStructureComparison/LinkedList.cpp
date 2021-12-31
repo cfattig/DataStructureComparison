@@ -55,3 +55,47 @@ void linkedList::print(info record)
 }
 
 
+bool linkedList::insert(info record)
+{
+	linkedListNode *prev;
+	linkedListNode *curr = headptr;
+
+	//empty case
+	if (headptr == nullptr)
+	{
+		headptr = new (nothrow) linkedListNode;
+		if (headptr == nullptr)
+		{
+			cout << "Memory allocation error. Terminating program." << endl;
+			return false;
+		}
+
+		tailptr = headptr;
+		headptr->record = record;
+		headptr->next = nullptr;
+		headptr->last = nullptr;
+
+		return true;
+	}
+
+	//front case
+	if (headptr->next == nullptr)
+	{
+		headptr->next = new (nothrow) linkedListNode;
+		if (headptr->next == nullptr)
+		{
+			cout << "Memory allocation error. Terminating program." << endl;
+			return false;
+		}
+
+		tailptr = headptr->next;
+		tailptr->next = nullptr;
+		tailptr->last = headptr;
+		tailptr->record = record;
+		return true;
+	}
+	//middle case
+	//end case
+
+	return false;
+}

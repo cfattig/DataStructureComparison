@@ -16,7 +16,7 @@ struct info
 struct linkedListNode 
 {
 	info record;
-	linkedListNode *prev;
+	linkedListNode *last;
 	linkedListNode *next;
 };
 
@@ -29,7 +29,7 @@ public:
 	//info find(string name);
 	//info find(int age);
 	//info find(bool degree);
-	//bool insert(info record);
+	bool insert(info record);
 	//bool remove(info record);
 	//bool modify(info record);
 	//bool isEmpty();
