@@ -4,10 +4,10 @@
 
 using namespace std;
 
-
 struct info 
 {
-	string	name;
+	string	firstName;
+	string	lastName;
 	int		age;
 	bool	degree;
 };
@@ -26,7 +26,8 @@ class linkedList
 public:
 	linkedList();
 	~linkedList();
-	//info find(string name);
+	//info find(string firstName);
+	//info find(string lastName);
 	//info find(int age);
 	//info find(bool degree);
 	bool insert(info record);

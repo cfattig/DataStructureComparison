@@ -48,7 +48,8 @@ void linkedList::list()
 
 void linkedList::print(info record) 
 {
-	cout << "Name: " << record.name << endl;
+	cout << "First Name: " << record.firstName << endl;
+	cout << "Last Name: " << record.lastName << endl;
 	cout << "Age: " << record.age << endl;
 	cout << "College Degree: " << record.degree << endl << endl;
 	return;
@@ -57,7 +58,7 @@ void linkedList::print(info record)
 
 bool linkedList::insert(info record)
 {
-	linkedListNode *prev;
+	linkedListNode *prev = nullptr;
 	linkedListNode *curr = headptr;
 
 	//empty case
@@ -79,23 +80,57 @@ bool linkedList::insert(info record)
 	}
 
 	//front case
-	if (headptr->next == nullptr)
+	if (record.firstName < headptr->record.firstName)
 	{
-		headptr->next = new (nothrow) linkedListNode;
-		if (headptr->next == nullptr)
+		curr = new (nothrow) linkedListNode;
+		if (curr == nullptr)
 		{
 			cout << "Memory allocation error. Terminating program." << endl;
 			return false;
 		}
-
-		tailptr = headptr->next;
-		tailptr->next = nullptr;
-		tailptr->last = headptr;
-		tailptr->record = record;
+		curr->next = headptr;
+		curr->last = nullptr;
+		curr->record = record;
+		headptr->last = curr;
+		headptr = curr;
 		return true;
 	}
-	//middle case
-	//end case
 
+	//middle case
+	while (curr != nullptr && record.firstName >= curr->record.firstName)
+	{
+		prev = curr;
+		curr = curr->next;
+	}
+	if (curr != nullptr)
+	{
+		prev->next = new (nothrow) linkedListNode;
+		if (prev->next == nullptr)
+		{
+			cout << "Memory allocation error. Terminating program." << endl;
+			return false;
+		}
+		prev->next->next = curr;
+		prev->next->last = prev;
+		prev->next->record = record;
+		curr->last = prev->next;
+		return true;
+	}
+
+	//end case
+	if (curr == nullptr)
+	{
+		prev->next = new (nothrow) linkedListNode;
+		if (prev->next == nullptr)
+		{
+			cout << "Memory allocation error. Terminating program." << endl;
+			return false;
+		}
+		prev->next->next = curr;
+		prev->next->last = prev;
+		prev->next->record = record;
+		tailptr = prev->next;
+		return true;
+	}
 	return false;
 }
