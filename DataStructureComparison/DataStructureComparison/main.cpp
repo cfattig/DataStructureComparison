@@ -1,29 +1,48 @@
-// DataStructureComparison.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include "Header.h"
 
 
 int main()
 {
-	struct record {
-		string name;
-		int age;
+	linkedList list;
+	char input;
 
-	};
+	
 
-	record one{"cat", 2};
-    cout << "Hello World!\n" << one.name << " " << one.age << endl;
+	do 
+	{
+		cout << "list of commands:" << endl;
+		cout << "i - insert" << endl;
+		cout << "r - remove" << endl;
+		cout << "l - list all records" << endl;
+		cout << "f - find" << endl;
+		cout << "e - exit program\n" << endl;
+		cout << "Enter a command"<< endl;
+
+		cin >> input;
+		system("cls");
+
+		switch (input)
+		{
+			case 'i':
+				break;
+			case 'r':
+				break;
+			case 'l':
+				list.list();
+				break;
+			case 'f':
+				break;
+			case 'e':
+				break;
+			default:
+				cout << "Invalid option, please enter a command from the list\n" << endl;
+
+		}
+		
+
+	} while (input != 'e');
+
+	cout << "Program closed successfully" << endl;
+
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
-

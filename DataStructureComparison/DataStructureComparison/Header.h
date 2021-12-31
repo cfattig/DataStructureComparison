@@ -5,24 +5,27 @@
 using namespace std;
 
 
-struct info {
+struct info 
+{
 	string	name;
 	int		age;
 	bool	degree;
 };
 
 
-struct linkedListNode {
+struct linkedListNode 
+{
 	info record;
 	linkedListNode *prev;
 	linkedListNode *next;
 };
 
-class linkedList {
+class linkedList 
+{
 
 public:
-	//linkedList();
-	//~linkedList();
+	linkedList();
+	~linkedList();
 	//info find(string name);
 	//info find(int age);
 	//info find(bool degree);
@@ -30,8 +33,10 @@ public:
 	//bool remove(info record);
 	//bool modify(info record);
 	//bool isEmpty();
-	//void print(info record);
-	//void list();
+	void print(info record);
+	//bool sort();
+	//bool scramble();
+	void list();
 
 
 private:
