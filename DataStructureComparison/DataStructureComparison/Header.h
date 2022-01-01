@@ -31,7 +31,7 @@ public:
 	//info find(int age);
 	//info find(bool degree);
 	bool insert(info record);
-	//bool remove(info record);
+	bool remove(info record);
 	//bool modify(info record);
 	//bool isEmpty();
 	void print(info record);
@@ -44,3 +44,6 @@ private:
 	linkedListNode *headptr;
 	linkedListNode *tailptr;
 };
+
+info fillRecord();
+bool operator==(info left, info right);

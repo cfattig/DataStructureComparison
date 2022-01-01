@@ -134,3 +134,70 @@ bool linkedList::insert(info record)
 	}
 	return false;
 }
+
+
+bool linkedList::remove(info record) {
+	linkedListNode *prev = nullptr;
+	linkedListNode *curr = headptr;
+
+
+	//empty case
+	if (headptr == nullptr)
+	{
+		cout << "The linked list is empty, there is nothing to remove\n" << endl;
+		return true;
+	}
+
+	//last node in list case
+	if (headptr == tailptr && headptr->record == record)
+	{
+		delete headptr;
+		headptr = nullptr;
+		tailptr = nullptr;
+		return true;
+	}
+
+
+	//front case
+	if (headptr->record == record) 
+	{
+		headptr = headptr->next;
+		delete curr;
+		headptr->last = nullptr;
+		return true;
+	}
+
+	//traverse
+	while (curr != nullptr && !(curr->record == record))
+	{
+		prev = curr;
+		curr = curr->next;
+	}
+
+	//end case
+	if (curr != nullptr && curr == tailptr )
+	{
+		prev->next = nullptr;
+		tailptr = prev;
+		delete curr;
+		return true;
+	}
+	
+	//middle case
+	if (curr != nullptr && curr->record == record)
+	{
+		prev->next = curr->next;
+		curr->next->last = prev;
+		delete curr;
+		return true;
+	}
+
+	//not found
+	if (curr == nullptr)
+	{
+		cout << "No record was found with the provided information\n" << endl;
+		return true;
+	}
+
+	return false;
+}

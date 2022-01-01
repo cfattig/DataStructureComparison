@@ -28,29 +28,24 @@ int main()
 		{
 			//insert data into data structure
 			case 'i':
-				cout << "Enter the person's first name for the record" << endl;
-				cin >> tempRecord.firstName;
-				cout << "\nEnter the person's last name for the record" << endl;
-				cin >> tempRecord.lastName;
-				cout << "\nEnter an age for the record" << endl;
-				cin >> tempRecord.age;
-				cout << "\nEnter whether the person on record holds a college degree (1=true|0=false)" << endl;
-				cin >> tempRecord.degree;
-				cout << endl;
-
+				tempRecord = fillRecord();
 				successCheck = list.insert(tempRecord);
 				break;
 
+			//remove data from data structure
 			case 'r':
 				break;
 
+			//list out all records
 			case 'l':
 				list.list();
 				break;
 
+			//find a record from data structure
 			case 'f':
 				break;
 
+			//frees up allocated memory and ends the program
 			case 'e':
 				break;
 
@@ -69,4 +64,31 @@ int main()
 	cout << "Program closed successfully" << endl;
 
 	return 0;
+}
+
+
+info fillRecord() {
+	info temp;
+	
+	cout << "Enter the person's first name for the record" << endl;
+	cin >> temp.firstName;
+	cout << "\nEnter the person's last name for the record" << endl;
+	cin >> temp.lastName;
+	cout << "\nEnter an age for the record" << endl;
+	cin >> temp.age;
+	cout << "\nEnter whether the person on record holds a college degree (1=true|0=false)" << endl;
+	cin >> temp.degree;
+	cout << endl;
+
+	return temp;
+}
+
+
+//overloads == operator so as to be able to compare info stuctures
+bool operator==(info left, info right)
+{
+	if(left.age == right.age && left.degree == right.degree && left.firstName == right.firstName && left.lastName == right.lastName)
+		return true;
+
+	return false;
 }
