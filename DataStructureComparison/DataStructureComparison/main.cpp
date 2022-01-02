@@ -34,6 +34,8 @@ int main()
 
 			//remove data from data structure
 			case 'r':
+				tempRecord = fillRecord();
+				successCheck = list.remove(tempRecord);
 				break;
 
 			//list out all records
